@@ -29,7 +29,7 @@ export default function Home() {
             />
           </div>
           <div className="hero-text">
-            <h2>Olá, meu nome é <span className="name-inline">Alexis Mariz</span></h2>
+            <h2>Olá, meu nome é <span className="name-inline">Alexis Mariz.</span></h2>
             <h3 className="story-title">Minha história</h3>
             <p>
               Formado em Ciência da Computação pela Universidade Federal de Minas Gerais, carrego com orgulho a bagagem
