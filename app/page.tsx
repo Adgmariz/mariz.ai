@@ -48,7 +48,7 @@ export default function Home() {
         <section className="projects">
           <h2>Projetos</h2>
           <p className="projects-intro">
-            Abaixo está uma lista não exaustiva dos projetos em que trabalhei ou que mantenho ativos.
+            Abaixo está uma lista não exaustiva dos meus projetos.
           </p>
           {projetos.length > 0 ? (
             <ul className="project-list">
