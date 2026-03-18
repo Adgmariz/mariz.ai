@@ -18,11 +18,11 @@ const jetbrainsMono = JetBrains_Mono({
 const site = 'https://mariz.ai'
 
 export const metadata: Metadata = {
-  title: 'Vibeflow — Less brainrot, more flow',
+  title: 'VibeFlow — Less brainrot, more flow',
   description:
     'Block distracting apps on iPhone. Unlock when you code with Cursor or Claude — automatically. Focus mode for developers.',
   keywords: [
-    'Vibeflow',
+    'VibeFlow',
     'focus app',
     'iPhone',
     'block apps',
@@ -34,20 +34,20 @@ export const metadata: Metadata = {
     'coding',
   ],
   robots: { index: true, follow: true },
-  authors: [{ name: 'Vibeflow' }],
+  authors: [{ name: 'VibeFlow' }],
   openGraph: {
     type: 'website',
-    title: 'Vibeflow — Less brainrot, more flow',
+    title: 'VibeFlow — Less brainrot, more flow',
     description:
       'Block distracting apps on iPhone. Unlock when you code with Cursor or Claude — automatically.',
     locale: 'en_US',
     alternateLocale: ['pt_BR'],
-    siteName: 'Vibeflow',
+    siteName: 'VibeFlow',
     url: `${site}/vibeflow`,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Vibeflow — Less brainrot, more flow',
+    title: 'VibeFlow — Less brainrot, more flow',
     description:
       'Block distracting apps on iPhone. Unlock when you code with Cursor or Claude — automatically.',
   },

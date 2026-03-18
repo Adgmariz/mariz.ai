@@ -27,14 +27,19 @@
 .page {
   max-width: 640px;
   margin: 0 auto;
-  padding: clamp(2rem, 6vw, 4rem) 1.5rem;
+  padding: clamp(1rem, 4vw, 2rem) 1.5rem clamp(2rem, 6vw, 4rem);
   position: relative;
 }
 
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
 .langSwitcher {
-  position: absolute;
-  top: 0;
-  right: 0;
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -187,7 +192,7 @@
 }
 
 .steps {
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 .steps h2 {
@@ -232,6 +237,84 @@
   border: 1px solid var(--border);
   border-radius: 6px;
   color: var(--accent);
+}
+
+.lookLike {
+  margin: 0.5rem 0 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.lookLike h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.5rem;
+}
+
+.lookLikeIntro {
+  font-size: 1rem;
+  color: var(--text);
+  margin: 0 0 1rem;
+  line-height: 1.6;
+  max-width: 36em;
+}
+
+.mockupGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 0;
+  align-items: center;
+}
+
+.mockupItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 560px;
+}
+
+.mockupImg {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  object-fit: contain;
+}
+
+.mockupCaption {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.formBottom {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.formBottom .formIntro {
+  margin-bottom: 1rem;
 }
 
 .footer {

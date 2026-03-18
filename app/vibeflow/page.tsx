@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
 import styles from './vibeflow.module.css'
 
@@ -20,7 +21,7 @@ const t = {
     step1:
       'On iPhone, you choose which apps (the brainrot) to block and when — once.',
     step2:
-      'When you send a prompt in Cursor or Claude Code, Vibeflow detects it and notifies the app.',
+      'When you send a prompt in Cursor or Claude Code, VibeFlow detects it and notifies the app.',
     step3:
       'Apps unlock right away. When AI finishes, the block comes back so you can get back to the flow!',
     footer: 'One email, on launch day. No spam, no commitment.',
@@ -28,6 +29,10 @@ const t = {
     successMsg: "You're on the list!",
     errorGeneric: 'Something went wrong. Try again.',
     errorNetwork: 'Connection error. Check the API URL or try later.',
+    lookLikeTitle: 'What does it look like?',
+    lookLikeIntro: 'Focus mode on your iPhone. Choose which apps to block and when — the app unlocks them automatically when you code in Cursor or Claude.',
+    mockupFocusCaption: 'Focus mode ON. Your blocked apps stay locked until you start coding with AI.',
+    mockupUnlockedCaption: 'AI detected. Apps unlock while Cursor is active; they lock again when you’re done.',
   },
   pt: {
     logoTag: 'Bloqueie os apps que sugam sua atenção no iPhone.',
@@ -35,7 +40,7 @@ const t = {
     headline: 'Menos brainrot. Entre no Flow!',
     tagline:
       'Libera os apps na hora em que você coloca a IA para trabalhar no Cursor ou no Claude Code — e bloqueia de volta quando ela termina. Automaticamente.',
-    formIntro: 'Seja avisado no lançamento. Acesso antecipado para quem entra na lista.',
+    formIntro: 'Seja avisado no lançamento. Acesso antecipado para quem entrar na lista.',
     emailPlaceholder: 'seu@email.com',
     submitBtn: 'Quero ser avisado',
     submitting: 'Enviando…',
@@ -43,7 +48,7 @@ const t = {
     step1:
       'No iPhone, você escolhe quais apps (o brainrot) bloquear e em quais horários — uma vez só.',
     step2:
-      'Quando você manda um prompt no Cursor ou Claude Code, o Vibeflow detecta e avisa o app.',
+      'Quando você manda um prompt no Cursor ou Claude Code, o VibeFlow detecta e avisa o app.',
     step3:
       'Os apps liberam na hora. Quando a IA termina, o bloqueio volta sozinho para você voltar para o Flow!',
     footer: 'Um e-mail só, no dia do lançamento. Sem spam, sem compromisso.',
@@ -51,6 +56,10 @@ const t = {
     successMsg: 'Inscrito com sucesso!',
     errorGeneric: 'Algo deu errado. Tente de novo.',
     errorNetwork: 'Erro de conexão. Verifique a URL da API ou tente depois.',
+    lookLikeTitle: 'Como é o app?',
+    lookLikeIntro: 'Modo foco no seu iPhone. Você escolhe quais apps bloquear e quando — o app libera automaticamente quando você coda no Cursor ou no Claude.',
+    mockupFocusCaption: 'Modo foco LIGADO. Os apps bloqueados ficam inacessíveis até você começar a codar com IA.',
+    mockupUnlockedCaption: 'IA detectada. Os apps liberam enquanto o Cursor está ativo e bloqueiam de novo quando você termina.',
   },
 } as const
 
@@ -84,7 +93,7 @@ export default function VibeflowPage() {
     setLangState(next)
     document.documentElement.lang = next === 'pt' ? 'pt-BR' : 'en'
     document.title =
-      next === 'pt' ? 'Vibeflow — Menos brainrot, mais fluxo' : 'Vibeflow — Less brainrot, more flow'
+      next === 'pt' ? 'VibeFlow — Menos brainrot, mais fluxo' : 'VibeFlow — Less brainrot, more flow'
   }, [])
 
   useEffect(() => {
@@ -144,7 +153,7 @@ export default function VibeflowPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebSite',
-            name: 'Vibeflow',
+            name: 'VibeFlow',
             description:
               'Block distracting apps on iPhone. Unlock when you code with Cursor or Claude Code — automatically. Less brainrot, more flow.',
             url: 'https://mariz.ai/vibeflow',
@@ -165,7 +174,7 @@ export default function VibeflowPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'SoftwareApplication',
-            name: 'Vibeflow',
+            name: 'VibeFlow',
             applicationCategory: 'ProductivityApplication',
             operatingSystem: 'iOS',
             description:
@@ -175,28 +184,29 @@ export default function VibeflowPage() {
       />
 
       <main className={styles.page}>
-        <div className={styles.langSwitcher} role="group" aria-label="Language">
-          <button
-            type="button"
-            title="English"
-            aria-pressed={mounted && lang === 'en'}
-            className={mounted && lang === 'en' ? styles.langBtnActive : ''}
-            onClick={() => setLang('en')}
-          >
-            🇺🇸
-          </button>
-          <button
-            type="button"
-            title="Português"
-            aria-pressed={mounted && lang === 'pt'}
-            className={mounted && lang === 'pt' ? styles.langBtnActive : ''}
-            onClick={() => setLang('pt')}
-          >
-            🇧🇷
-          </button>
-        </div>
-
-        <div className={styles.logo}>Vibeflow</div>
+        <header className={styles.pageHeader}>
+          <div className={styles.logo}>VibeFlow</div>
+          <div className={styles.langSwitcher} role="group" aria-label="Language">
+            <button
+              type="button"
+              title="English"
+              aria-pressed={mounted && lang === 'en'}
+              className={mounted && lang === 'en' ? styles.langBtnActive : ''}
+              onClick={() => setLang('en')}
+            >
+              🇺🇸
+            </button>
+            <button
+              type="button"
+              title="Português"
+              aria-pressed={mounted && lang === 'pt'}
+              className={mounted && lang === 'pt' ? styles.langBtnActive : ''}
+              onClick={() => setLang('pt')}
+            >
+              🇧🇷
+            </button>
+          </div>
+        </header>
         <p className={styles.logoTag}>{s.logoTag}</p>
         <p className={styles.logoByline}>{s.logoByline}</p>
         <h1 className={styles.h1}>{s.headline}</h1>
@@ -241,6 +251,67 @@ export default function VibeflowPage() {
               <span>{s.step3}</span>
             </li>
           </ol>
+        </section>
+
+        <section className={styles.lookLike} aria-labelledby="look-like-heading">
+          <h2 id="look-like-heading">{s.lookLikeTitle}</h2>
+          <p className={styles.lookLikeIntro}>{s.lookLikeIntro}</p>
+          <div className={styles.mockupGrid}>
+            <div className={styles.mockupItem}>
+              <Image
+                src="/vibeflow2.png"
+                alt="VibeFlow app screen: Focus mode ON and list of blocked apps."
+                width={560}
+                height={840}
+                className={styles.mockupImg}
+                unoptimized
+                priority={false}
+              />
+              <p className={styles.mockupCaption}>{s.mockupFocusCaption}</p>
+            </div>
+            <div className={styles.mockupItem}>
+              <Image
+                src="/vibeflow1.png"
+                alt="VibeFlow app screen: Working AI detected, apps unlocked."
+                width={560}
+                height={840}
+                className={styles.mockupImg}
+                unoptimized
+                priority={false}
+              />
+              <p className={styles.mockupCaption}>{s.mockupUnlockedCaption}</p>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.formBottom} aria-labelledby="waitlist-bottom-heading">
+          <h2 id="waitlist-bottom-heading" className={styles.srOnly}>
+            {lang === 'pt' ? 'Lista de espera' : 'Waitlist'}
+          </h2>
+          <p className={styles.formIntro}>{s.formIntro}</p>
+          <div className={styles.formWrap}>
+            <form className={styles.formRow} noValidate onSubmit={onSubmit}>
+              <input
+                type="email"
+                name="email-waitlist-bottom"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={s.emailPlaceholder}
+                required
+                autoComplete="email"
+                aria-label={
+                  lang === 'pt' ? 'Seu e-mail (rodapé da página)' : 'Your email (bottom of page)'
+                }
+                className={styles.emailInput}
+              />
+              <button type="submit" disabled={loading} className={styles.submitBtn}>
+                {loading ? s.submitting : s.submitBtn}
+              </button>
+            </form>
+            <p className={msgClass} aria-live="polite">
+              {message.text}
+            </p>
+          </div>
         </section>
 
         <footer className={styles.footer}>{s.footer}</footer>
