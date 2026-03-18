@@ -1,0 +1,13 @@
+# Worker da waitlist Vibeflow — deploy: npx wrangler deploy
+name = "vibeflow-waitlist"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# KV para armazenar os e-mails (crie antes: npx wrangler kv namespace create VIBEFLOW_WAITLIST)
+[[kv_namespaces]]
+binding = "WAITLIST"
+id = "dca41ed1ad9d4309b5c7e4ea9a3b4a04"
+
+# Variáveis de ambiente (opcional — para rate limit ou domínios permitidos)
+# [vars]
+# ALLOWED_ORIGINS = "https://mariz.ai,http://localhost:3000"
