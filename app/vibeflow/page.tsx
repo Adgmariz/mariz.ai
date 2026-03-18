@@ -189,21 +189,21 @@ export default function VibeflowPage() {
           <div className={styles.langSwitcher} role="group" aria-label="Language">
             <button
               type="button"
-              title="English"
-              aria-pressed={mounted && lang === 'en'}
-              className={mounted && lang === 'en' ? styles.langBtnActive : ''}
-              onClick={() => setLang('en')}
-            >
-              🇺🇸
-            </button>
-            <button
-              type="button"
               title="Português"
               aria-pressed={mounted && lang === 'pt'}
               className={mounted && lang === 'pt' ? styles.langBtnActive : ''}
               onClick={() => setLang('pt')}
             >
               🇧🇷
+            </button>
+            <button
+              type="button"
+              title="English"
+              aria-pressed={mounted && lang === 'en'}
+              className={mounted && lang === 'en' ? styles.langBtnActive : ''}
+              onClick={() => setLang('en')}
+            >
+              🇺🇸
             </button>
           </div>
         </header>
