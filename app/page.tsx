@@ -23,7 +23,7 @@ const t = {
     nr1Desc:
       'Sistema para aplicação de questionários de análise de riscos psicossociais, em conformidade com a NR-1.',
     vibeflowDesc:
-      'App para vibecoders que bloqueia distrações no iPhone e libera automaticamente quando você codifica com Cursor ou Claude.',
+      'App para vibecoders que bloqueia distrações no iPhone e libera automaticamente quando você programa com Cursor ou Claude Code.',
   },
   en: {
     siteTitle: 'Mariz AI',

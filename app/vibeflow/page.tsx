@@ -57,8 +57,8 @@ const t = {
     errorGeneric: 'Algo deu errado. Tente de novo.',
     errorNetwork: 'Erro de conexão. Verifique a URL da API ou tente depois.',
     lookLikeTitle: 'Como é o app?',
-    lookLikeIntro: 'Modo foco no seu iPhone. Você escolhe quais apps bloquear e quando — o app libera automaticamente quando você coda no Cursor ou no Claude.',
-    mockupFocusCaption: 'Modo foco LIGADO. Os apps bloqueados ficam inacessíveis até você começar a codar com IA.',
+    lookLikeIntro: 'Modo foco no seu iPhone. Você escolhe quais apps bloquear e quando — o app libera automaticamente quando você programar no Cursor ou no Claude.',
+    mockupFocusCaption: 'Modo foco LIGADO. Os apps bloqueados ficam inacessíveis até você começar a programar com IA.',
     mockupUnlockedCaption: 'IA detectada. Os apps liberam enquanto o Cursor está ativo e bloqueiam de novo quando você termina.',
   },
 } as const
