@@ -24,11 +24,51 @@
   box-sizing: border-box;
 }
 
-.page {
-  max-width: 640px;
+.pageLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 960px;
   margin: 0 auto;
-  padding: clamp(1rem, 4vw, 2rem) 1.5rem clamp(2rem, 6vw, 4rem);
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .pageLayout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2.5rem;
+    padding: clamp(1rem, 4vw, 2rem) 1.5rem clamp(2rem, 6vw, 4rem);
+  }
+}
+
+.page {
+  flex: 1;
+  min-width: 0;
+  max-width: 640px;
+  margin: 0;
+  padding: clamp(1rem, 4vw, 2rem) 0 clamp(2rem, 6vw, 4rem);
   position: relative;
+}
+
+@media (min-width: 900px) {
+  .page {
+    padding: 0;
+    max-width: 640px;
+  }
+}
+
+.sidebar {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .sidebar {
+    width: 260px;
+    position: sticky;
+    top: clamp(1rem, 4vw, 2rem);
+  }
 }
 
 .pageHeader {
@@ -315,6 +355,48 @@
 
 .formBottom .formIntro {
   margin-bottom: 1rem;
+}
+
+.followXCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.followXCard:hover {
+  border-color: var(--text-muted);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.followXIcon {
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--text);
+}
+
+.followXText {
+  flex: 1;
+  min-width: 0;
+}
+
+.followXTitle {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.followXBtn {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
 }
 
 .footer {

@@ -33,6 +33,8 @@ const t = {
     lookLikeIntro: 'Focus mode on your iPhone. Choose which apps to block and when — the app unlocks them automatically when you code in Cursor or Claude.',
     mockupFocusCaption: 'Focus mode ON. Your blocked apps stay locked until you start coding with AI.',
     mockupUnlockedCaption: 'AI detected. Apps unlock while Cursor is active; they lock again when you’re done.',
+    followOnX: 'Follow me on X for updates.',
+    followXBtn: 'Follow @Mariz_Alexis',
   },
   pt: {
     logoTag: 'Bloqueie os apps que sugam sua atenção no iPhone.',
@@ -60,6 +62,8 @@ const t = {
     lookLikeIntro: 'Modo foco no seu iPhone. Você escolhe quais apps bloquear e quando — o app libera automaticamente quando você programar no Cursor ou no Claude.',
     mockupFocusCaption: 'Modo foco LIGADO. Os apps bloqueados ficam inacessíveis até você começar a programar com IA.',
     mockupUnlockedCaption: 'IA detectada. Os apps liberam enquanto o Cursor está ativo e bloqueiam de novo quando você termina.',
+    followOnX: 'Siga-me no X para novidades.',
+    followXBtn: 'Seguir @Mariz_Alexis',
   },
 } as const
 
@@ -183,6 +187,7 @@ export default function VibeflowPage() {
         }}
       />
 
+      <div className={styles.pageLayout}>
       <main className={styles.page}>
         <header className={styles.pageHeader}>
           <div className={styles.logo}>VibeFlow</div>
@@ -316,6 +321,27 @@ export default function VibeflowPage() {
 
         <footer className={styles.footer}>{s.footer}</footer>
       </main>
+
+        <aside className={styles.sidebar} aria-labelledby="follow-x-heading">
+          <h2 id="follow-x-heading" className={styles.srOnly}>
+            {lang === 'pt' ? 'Siga no X' : 'Follow on X'}
+          </h2>
+          <a
+            href="https://x.com/Mariz_Alexis"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.followXCard}
+          >
+            <span className={styles.followXIcon} aria-hidden>
+              𝕏
+            </span>
+            <div className={styles.followXText}>
+              <p className={styles.followXTitle}>{s.followOnX}</p>
+              <span className={styles.followXBtn}>{s.followXBtn}</span>
+            </div>
+          </a>
+        </aside>
+      </div>
     </div>
   )
 }
