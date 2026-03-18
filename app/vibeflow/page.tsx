@@ -126,7 +126,7 @@ export default function VibeflowPage() {
       })
       const data = (await res.json().catch(() => ({}))) as { message?: string }
       if (res.ok) {
-        setMessage({ text: data.message || s.successMsg, type: 'success' })
+        setMessage({ text: s.successMsg, type: 'success' })
         setEmail('')
       } else {
         setMessage({ text: data.message || s.errorGeneric, type: 'error' })
