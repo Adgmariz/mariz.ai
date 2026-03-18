@@ -8,6 +8,11 @@ export default function Home() {
       descricao: 'Sistema para aplicação de questionários de análise de riscos psicossociais, em conformidade com a NR-1.',
       url: 'https://www.nr1riscospsicossociais.com.br/',
     },
+    {
+      nome: 'VibeFlow',
+      descricao: 'App para vibecoders que bloqueia distrações no iPhone e liberar automaticamente quando você codifica com Cursor ou Claude.',
+      url: '/vibeflow',
+    },
   ]
 
   return (
@@ -55,7 +60,12 @@ export default function Home() {
               {projetos.map((projeto, i) => (
                 <li key={i} className="project-item">
                   {projeto.url ? (
-                    <Link href={projeto.url} target="_blank" rel="noopener noreferrer">
+                    <Link
+                      href={projeto.url}
+                      {...(projeto.url.startsWith('http')
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
+                    >
                       <strong>{projeto.nome}</strong>
                       {projeto.descricao && (
                         <span className="project-desc"> — {projeto.descricao}</span>
