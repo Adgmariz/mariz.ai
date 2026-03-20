@@ -22,8 +22,6 @@ const t = {
     nr1Name: 'NR1 Riscos Psicossociais',
     nr1Desc:
       'Sistema para aplicação de questionários de análise de riscos psicossociais, em conformidade com a NR-1.',
-    vibeflowDesc:
-      'App para vibecoders que bloqueia distrações no iPhone e libera automaticamente quando você programa com Cursor ou Claude Code.',
   },
   en: {
     siteTitle: 'Mariz AI',
@@ -40,8 +38,6 @@ const t = {
     nr1Name: 'NR1 Riscos Psicossociais',
     nr1Desc:
       'System for applying psychosocial risk analysis questionnaires, in compliance with NR-1, a Brazilian regulation for occupational health and safety in the workplace.',
-    vibeflowDesc:
-      'App for vibecoders that blocks distractions on iPhone and unlocks automatically when you code with Cursor or Claude Code.',
   },
 } as const
 
@@ -84,11 +80,6 @@ export default function Home() {
       nome: s.nr1Name,
       descricao: s.nr1Desc,
       url: 'https://www.nr1riscospsicossociais.com.br/',
-    },
-    {
-      nome: 'VibeFlow',
-      descricao: s.vibeflowDesc,
-      url: '/vibeflow',
     },
   ]
 
