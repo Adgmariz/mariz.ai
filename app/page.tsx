@@ -169,6 +169,11 @@ export default function Home() {
 
       <footer className="footer">
         <p>© {new Date().getFullYear()} Mariz AI</p>
+        <p className="footer-legal">
+          MARIZ TECNOLOGIA E INTELIGENCIA ARTIFICIAL LTDA
+          <br />
+          CNPJ 65.123.113/0001-20
+        </p>
       </footer>
     </main>
   )
