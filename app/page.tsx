@@ -156,7 +156,7 @@ export default function Home() {
       <footer className={s.rodape}>
         <div className={s.largura}>
           <div className={s.marca}>
-            <img src="/icone-claro.svg" alt="" width={30} height={30} />
+            <img src="/logo.svg" alt="" width={34} height={34} />
             Mariz AI
           </div>
           <span>

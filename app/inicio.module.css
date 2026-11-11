@@ -270,9 +270,9 @@
 }
 
 .rodape .marca img {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 0;
 }
 
 @media (max-width: 760px) {
