@@ -86,7 +86,10 @@ export default function Home() {
   return (
     <main className="blog">
       <header className="header">
-        <h1 className="site-title">{s.siteTitle}</h1>
+        <h1 className="site-title">
+          <img src="/logo.svg" alt="" className="site-logo" width={44} height={44} />
+          {s.siteTitle}
+        </h1>
         <div className="lang-switcher" role="group" aria-label={lang === 'pt' ? 'Idioma' : 'Language'}>
           <button
             type="button"
