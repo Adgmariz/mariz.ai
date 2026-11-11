@@ -1,43 +1,55 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
+import { IBM_Plex_Mono, Plus_Jakarta_Sans } from 'next/font/google'
 import { useCallback, useEffect, useState } from 'react'
+import s from './inicio.module.css'
+
+const texto = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], variable: '--fonte-texto' })
+const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--fonte-mono' })
 
 const STORAGE_KEY = 'mariz-lang'
 
 const t = {
   pt: {
-    siteTitle: 'Mariz AI',
-    hello: 'Olá, meu nome é',
-    name: 'Alexis Mariz!',
-    storyTitle: 'Minha história',
-    story1:
+    titulo: 'Olá, eu sou Alexis Mariz.',
+    chamada: 'Cientista da computação pela UFMG. Construo produtos e agentes com inteligência artificial.',
+    verProjetos: 'Ver projetos',
+    fotoAlt: 'Alexis na formatura',
+    legenda: 'Formatura · Ciência da Computação, UFMG',
+    historiaRotulo: 'Minha história',
+    historiaTitulo: 'Aprender a aprender.',
+    historia1:
       'Formado em Ciência da Computação pela Universidade Federal de Minas Gerais, carrego com orgulho a bagagem de uma formação que valoriza rigor acadêmico e pensamento crítico. Essa foto registra um daqueles momentos que marcam: a formatura, o diploma na mão e a sensação de dever cumprido. Foram muitos desafios, uma pandemia e o principal aprendizado: como aprender a aprender.',
-    story2:
+    historia2:
       'Desde a faculdade me dedico à Inteligência Artificial, agentes e programação com IA. Hoje estou numa jornada de empreendedorismo, levando esse conhecimento para projetos reais e ajudando a construir o futuro com tecnologia.',
-    projectsTitle: 'Projetos',
-    projectsIntro: 'Abaixo está uma lista não exaustiva dos meus projetos.',
-    projectsEmpty: 'Em breve, novos projetos serão listados aqui.',
-    nr1Name: 'NR1 Riscos Psicossociais',
-    nr1Desc:
-      'Sistema para aplicação de questionários de análise de riscos psicossociais, em conformidade com a NR-1.',
+    projetosRotulo: 'Projetos',
+    projetosTitulo: 'O que estou construindo',
+    nr1Etiqueta: 'SaaS · Saúde ocupacional',
+    nr1Desc: 'Sistema para aplicação de questionários de análise de riscos psicossociais, em conformidade com a NR-1.',
+    visitar: 'Visitar ↗',
+    emBreve: 'Novos projetos em breve',
+    idioma: 'Idioma',
   },
   en: {
-    siteTitle: 'Mariz AI',
-    hello: "Hi, I'm",
-    name: 'Alexis Mariz!',
-    storyTitle: 'My story',
-    story1:
-      'I have a degree in Computer Science from Universidade Federal de Minas Gerais, and I carry the pride of a education that values academic rigor and critical thinking. This photo captures one of those defining moments: graduation, diploma in hand, and the feeling of mission accomplished. There were many challenges, a pandemic, and the main lesson: how to learn to learn.',
-    story2:
+    titulo: "Hi, I'm Alexis Mariz.",
+    chamada: 'Computer scientist from UFMG. I build products and agents with artificial intelligence.',
+    verProjetos: 'See projects',
+    fotoAlt: 'Alexis at graduation',
+    legenda: 'Graduation · Computer Science, UFMG',
+    historiaRotulo: 'My story',
+    historiaTitulo: 'Learning how to learn.',
+    historia1:
+      'I have a degree in Computer Science from Universidade Federal de Minas Gerais, and I carry the pride of an education that values academic rigor and critical thinking. This photo captures one of those defining moments: graduation, diploma in hand, and the feeling of mission accomplished. There were many challenges, a pandemic, and the main lesson: how to learn to learn.',
+    historia2:
       'Since university I have been dedicated to Artificial Intelligence, agents, and programming with AI. Today I am on an entrepreneurial journey, taking this knowledge to real projects and helping to build the future with technology.',
-    projectsTitle: 'Projects',
-    projectsIntro: 'Below is a non-exhaustive list of my projects.',
-    projectsEmpty: 'New projects will be listed here soon.',
-    nr1Name: 'NR1 Riscos Psicossociais',
+    projetosRotulo: 'Projects',
+    projetosTitulo: "What I'm building",
+    nr1Etiqueta: 'SaaS · Occupational health',
     nr1Desc:
       'System for applying psychosocial risk analysis questionnaires, in compliance with NR-1, a Brazilian regulation for occupational health and safety in the workplace.',
+    visitar: 'Visit ↗',
+    emBreve: 'New projects coming soon',
+    idioma: 'Language',
   },
 } as const
 
@@ -65,7 +77,6 @@ export default function Home() {
     }
     setLangState(next)
     document.documentElement.lang = next === 'pt' ? 'pt-BR' : 'en'
-    document.title = next === 'pt' ? 'Mariz AI' : 'Mariz AI'
   }, [])
 
   useEffect(() => {
@@ -73,110 +84,85 @@ export default function Home() {
     setMounted(true)
   }, [setLang])
 
-  const s = t[lang]
-
-  const projetos = [
-    {
-      nome: s.nr1Name,
-      descricao: s.nr1Desc,
-      url: 'https://www.nr1riscospsicossociais.com.br/',
-    },
-  ]
+  const x = t[lang]
+  const ativo = (l: Lang) => (mounted && lang === l ? s.ativo : '')
 
   return (
-    <main className="blog">
-      <header className="header">
-        <h1 className="site-title">
-          <img src="/logo.svg" alt="" className="site-logo" width={44} height={44} />
-          {s.siteTitle}
-        </h1>
-        <div className="lang-switcher" role="group" aria-label={lang === 'pt' ? 'Idioma' : 'Language'}>
-          <button
-            type="button"
-            title="Português"
-            aria-pressed={mounted && lang === 'pt'}
-            className={mounted && lang === 'pt' ? 'active' : ''}
-            onClick={() => setLang('pt')}
-          >
-            🇧🇷
-          </button>
-          <button
-            type="button"
-            title="English"
-            aria-pressed={mounted && lang === 'en'}
-            className={mounted && lang === 'en' ? 'active' : ''}
-            onClick={() => setLang('en')}
-          >
-            🇺🇸
-          </button>
+    <main className={`${s.pagina} ${texto.variable} ${mono.variable}`}>
+      <div className={s.topo}>
+        <div className={s.largura}>
+          <header className={s.cabecalho}>
+            <div className={s.marca}>
+              <img src="/icone-claro.svg" alt="" width={40} height={40} />
+              Mariz AI
+            </div>
+            <div className={s.idiomas} role="group" aria-label={x.idioma}>
+              <button type="button" className={ativo('pt')} aria-pressed={mounted && lang === 'pt'} onClick={() => setLang('pt')}>
+                PT
+              </button>
+              <button type="button" className={ativo('en')} aria-pressed={mounted && lang === 'en'} onClick={() => setLang('en')}>
+                EN
+              </button>
+            </div>
+          </header>
+
+          <section className={s.hero}>
+            <div>
+              <h1>{x.titulo}</h1>
+              <p className={s.chamada}>{x.chamada}</p>
+              <div className={s.botoes}>
+                <a className={s.botao} href="#projetos">
+                  {x.verProjetos}
+                </a>
+              </div>
+            </div>
+            <figure className={s.polaroid}>
+              <img src="/alexis_formatura.jpeg" alt={x.fotoAlt} />
+              <figcaption>{x.legenda}</figcaption>
+            </figure>
+          </section>
         </div>
-      </header>
+      </div>
 
-      <article className="article">
-        <section className="hero">
-          <div className="hero-image-wrapper">
-            <Image
-              src="/alexis_formatura.jpeg"
-              alt={lang === 'pt' ? 'Alexis na formatura' : 'Alexis at graduation'}
-              width={600}
-              height={800}
-              className="hero-image"
-              priority
-            />
+      <div className={s.largura}>
+        <section className={s.historia}>
+          <div>
+            <div className={s.rotulo}>{x.historiaRotulo}</div>
+            <h2 className={s.titulo}>{x.historiaTitulo}</h2>
           </div>
-          <div className="hero-text">
-            <h2>
-              {s.hello} <span className="name-inline">{s.name}</span>
-            </h2>
-            <h3 className="story-title">{s.storyTitle}</h3>
-            <p>{s.story1}</p>
-            <p>{s.story2}</p>
+          <div>
+            <p>{x.historia1}</p>
+            <p>{x.historia2}</p>
           </div>
         </section>
+      </div>
 
-        <section className="projects">
-          <h2>{s.projectsTitle}</h2>
-          <p className="projects-intro">{s.projectsIntro}</p>
-          {projetos.length > 0 ? (
-            <ul className="project-list">
-              {projetos.map((projeto, i) => (
-                <li key={i} className="project-item">
-                  {projeto.url ? (
-                    <Link
-                      href={projeto.url}
-                      {...(projeto.url.startsWith('http')
-                        ? { target: '_blank', rel: 'noopener noreferrer' }
-                        : {})}
-                    >
-                      <strong>{projeto.nome}</strong>
-                      {projeto.descricao && (
-                        <span className="project-desc"> — {projeto.descricao}</span>
-                      )}
-                    </Link>
-                  ) : (
-                    <>
-                      <strong>{projeto.nome}</strong>
-                      {projeto.descricao && (
-                        <span className="project-desc"> — {projeto.descricao}</span>
-                      )}
-                    </>
-                  )}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="projects-empty">{s.projectsEmpty}</p>
-          )}
-        </section>
-      </article>
+      <section className={s.projetos} id="projetos">
+        <div className={s.largura}>
+          <div className={s.rotulo}>{x.projetosRotulo}</div>
+          <h2 className={s.titulo}>{x.projetosTitulo}</h2>
+          <div className={s.grade}>
+            <a className={s.cartao} href="https://www.nr1riscospsicossociais.com.br/" target="_blank" rel="noopener noreferrer">
+              <span className={s.etiqueta}>{x.nr1Etiqueta}</span>
+              <strong>NR1 Riscos Psicossociais</strong>
+              <p>{x.nr1Desc}</p>
+              <span className={s.visitar}>{x.visitar}</span>
+            </a>
+            <div className={s.embreve}>{x.emBreve}</div>
+          </div>
+        </div>
+      </section>
 
-      <footer className="footer">
-        <p>© {new Date().getFullYear()} Mariz AI</p>
-        <p className="footer-legal">
-          MARIZ TECNOLOGIA E INTELIGENCIA ARTIFICIAL LTDA
-          <br />
-          CNPJ 65.123.113/0001-20
-        </p>
+      <footer className={s.rodape}>
+        <div className={s.largura}>
+          <div className={s.marca}>
+            <img src="/icone-claro.svg" alt="" width={30} height={30} />
+            Mariz AI
+          </div>
+          <span>
+            © {new Date().getFullYear()} · MARIZ TECNOLOGIA E INTELIGENCIA ARTIFICIAL LTDA · CNPJ 65.123.113/0001-20
+          </span>
+        </div>
       </footer>
     </main>
   )
